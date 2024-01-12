@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "707916734409",
+    "project_id": "delivery-app-practica",
+    "storage_bucket": "delivery-app-practica.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707916734409:android:6f8bc0955db17624fed218",
+        "android_client_info": {
+          "package_name": "com.example.flutter_delivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707916734409-0eef9rqe5m3r1gmqspi10a8tml2qb170.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_delivery",
+            "certificate_hash": "afe39178a3ed30f5311f9b9c8c8a556289e1ae02"
+          }
+        },
+        {
+          "client_id": "707916734409-g6v82k23lr1uj1jo6be2qp31ij6r1qt2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqDE8JiRzwrZdznstXD1UhFYQFArPUJrs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707916734409-g6v82k23lr1uj1jo6be2qp31ij6r1qt2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
