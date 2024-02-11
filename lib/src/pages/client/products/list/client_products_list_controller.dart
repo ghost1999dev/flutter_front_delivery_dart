@@ -6,6 +6,7 @@ import 'package:flutter_delivery/src/pages/client/products/details/client_produc
 import 'package:flutter_delivery/src/provider/categories_provaider.dart';
 import 'package:flutter_delivery/src/Models/category.dart';
 import 'package:flutter_delivery/src/provider/products_provaiders.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:flutter_delivery/src/utils/shared_pref.dart';class ClienteProductsListController{
   BuildContext context;
   SharedPref _sharedPref = new SharedPref();
@@ -29,7 +30,7 @@ import 'package:flutter_delivery/src/utils/shared_pref.dart';class ClienteProduc
   }
 
   void openBottomSheet(Product product){
-    showModalBottomSheet(
+    showMaterialModalBottomSheet(
         context: context,
         builder:(context)=> ClientProductsDetailsPage(product: product)
     );

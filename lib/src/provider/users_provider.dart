@@ -117,6 +117,34 @@ class UsersProvider{
     }
   }
 
+  //METODO PARA TRAER LOS REPARTIDORES
+
+    Future<List<User>> getDeliveryMen()async{
+    try{
+      Uri url = Uri.http(_url, '$_api/findDeliveryMan');
+      Map<String, String> headers={
+        'Content-type': 'application/json',
+        HttpHeaders.authorizationHeader:sesionUser.sessionToken
+        //HttpHeaders.authorizationHeader:"Bearer $token"
+      };
+
+      final res = await http.get(url,headers: headers);
+
+      //print('Status ${res.statusCode}');
+      if(res.statusCode == 401){ //NO AUTORIZADO
+
+        MySnackbar.show(context, 'Tu sesion expiro');
+        new SharedPref().logout(context,sesionUser.id);
+      }
+      final data = json.decode(res.body);
+      User user = User.fromJsonList(data);
+      return user.toList;
+    }catch(error){
+        print('Error: $error');
+        return null;
+    }
+  }
+
 Future<ResponseApi> create(User user) async{
     try{
       Uri url= Uri.http(_url, '$_api/create');

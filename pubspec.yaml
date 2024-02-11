@@ -45,7 +45,7 @@ dev_dependencies:
   sn_progress_dialog: ^1.1.2
   image_picker: ^0.8.6
   flutter_masked_text: ^0.8.0
-  modal_bottom_sheet: ^2.1.2
+  modal_bottom_sheet: ^2.1.0
   flutter_image_slideshow: ^0.1.6
   fluttertoast: ^8.2.2
   google_maps_flutter: ^2.2.5
@@ -53,7 +53,7 @@ dev_dependencies:
   location: ^4.1.1
   geocoding: ^2.0.0
   geocode: 1.0.3
-
+  intl: ^0.18.1
 
 
 
