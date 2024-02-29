@@ -7,7 +7,9 @@ import 'package:flutter_delivery/src/pages/client/orders/create/cliente_orders_c
 import 'package:flutter_delivery/src/pages/client/products/list/client_products_list_controller.dart';
 import 'package:flutter_delivery/src/pages/client/products/list/client_products_list_page.dart';
 import 'package:flutter_delivery/src/pages/client/update/client_update_page.dart';
-import 'package:flutter_delivery/src/pages/delivery/orders/list/delivery_orders_list_pages.dart';
+import 'package:flutter_delivery/src/pages/delivery/list/delivery_orders_list_pages.dart';
+import 'package:flutter_delivery/src/pages/delivery/orders/map/delivery_orders_map_pages.dart';
+
 import 'package:flutter_delivery/src/pages/login/login_page.dart';
 import 'package:flutter_delivery/src/pages/register/register_page.dart';
 
@@ -47,9 +49,10 @@ class _MyAppState extends State<MyApp> {
         'client/address/create':(BuildContext context)=>ClientAddressCreatePages(),
         'client/address/map' :(BuildContext context)=>ClientAddressMapPage(),
         'restaurant/orders/list' : (BuildContext context) => RestaurantOrdersListPage(),
-        'delivery/orders/list': (BuildContext context) => DeliveryOrdersListPage(),
+        'delivery/orders/list': (BuildContext context) => DeliveryOrderListPage(),
         'restaurant/categories/create': (BuildContext context) => RestaurantCategoriesCreatePage(),
         'restaurant/products/create': (BuildContext context) => RestaurantProductsCreatePage(),
+        'delivery/orders/map': (BuildContext context) => DeliveryOrdersMapPage(),
 
         /*RUTAS DIRECCIONES*/
 

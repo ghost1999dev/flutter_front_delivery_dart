@@ -54,6 +54,7 @@ dev_dependencies:
   geocoding: ^2.0.0
   geocode: 1.0.3
   intl: ^0.18.1
+  url_launcher: ^6.0.6
 
 
 

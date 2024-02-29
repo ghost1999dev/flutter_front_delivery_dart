@@ -75,7 +75,7 @@ class ClientAddressMapController{
       _position = await Geolocator.getLastKnownPosition();
       animatedCamera(_position.latitude,_position.longitude);
     }catch(e){
-      print('Error '+ e);
+      print(e);
     }
   }
 

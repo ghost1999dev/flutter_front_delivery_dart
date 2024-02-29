@@ -5,15 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_delivery/src/Models/order.dart';
 import 'package:flutter_delivery/src/Models/product.dart';
 import 'package:flutter_delivery/src/Models/response_api.dart';
+import 'package:flutter_delivery/src/Models/user.dart';
 import 'package:flutter_delivery/src/provider/orders_provaider.dart';
 import 'package:flutter_delivery/src/provider/users_provider.dart';
 import 'package:flutter_delivery/src/utils/my_snackbar.dart';
 import 'package:flutter_delivery/src/utils/shared_pref.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import '../../../../Models/user.dart';
 
-class RestaurantOrdersDetailsController {
+
+class DeliveryOrdersDetailsController {
   BuildContext context;
   Function refresh;
   Product product;
@@ -45,15 +46,15 @@ class RestaurantOrdersDetailsController {
   }
 
   void updateOrder() async {
-    if (idDelivery != null) {
-      order.idDelivery = idDelivery;
       ResponseApi responseApi =
-          await _ordersProvaider.updateToDispatched(order);
+          await _ordersProvaider.updateToOnTheWay(order);
       MySnackbar.show(context, responseApi.message);
-      Navigator.pop(context,true);
-    } else {
-      MySnackbar.show(context, 'Selecciona el repartidor');
-    }
+      //Navigator.pop(context,true);
+
+      if (responseApi.success) {
+        Navigator.pushNamed(context,'delivery/orders/map',arguments: order.toJson());
+      }
+    
   }
 
   void getUsers() async {
