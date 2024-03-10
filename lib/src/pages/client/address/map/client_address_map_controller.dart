@@ -40,7 +40,9 @@ class ClientAddressMapController{
   }
 
   Future<Null>setLocationDraggableInfo() async {
-    if(initialPosition != null){
+
+    try {
+      if(initialPosition != null){
       double lat = initialPosition.target.latitude;
       double lng = initialPosition.target.longitude;
 
@@ -61,6 +63,12 @@ class ClientAddressMapController{
         }
       }
     }
+      
+    } catch (e) {
+      print('Ha ocurrido un error');
+      
+    }
+    
   }
 
 

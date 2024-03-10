@@ -56,16 +56,10 @@ class DeliveryOrdersMapController {
   }
 
   void updateToDelivery() async {
-    print(_distanceBetween);
-    /*if (_distanceBetween <= 200) {
-      ResponseApi responseApi = await _ordersProvaider.updateToDelivery(order);
-      if (responseApi.success) {
-        Navigator.pushNamedAndRemoveUntil(
-            context, 'delivery/orders/list', (route) => false);
-      }
-    } else {
-      MySnackbar.show(context, 'Debe estar mas cerca a la posicion de entrega');
-    }*/
+    ResponseApi responseApi = await _ordersProvaider.updateToDelivery(order);
+    if (responseApi.success) {
+      MySnackbar.show(context, responseApi.message);
+    }
   }
 
   Future<BitmapDescriptor> createMarkerFromAsset(String path) async {

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ class ClientAddressListController {
   List<Adress> address = [];
   List<Product> selectedProducts = [];
   AddressProvaider _addressProvaider = new AddressProvaider();
+  Adress a;
   User user;
   SharedPref _sharedPref = new SharedPref();
   int radioValue = 0;
@@ -26,23 +28,31 @@ class ClientAddressListController {
     this.context = context;
     this.refresh = refresh;
     user = User.fromJson(await _sharedPref.read('user'));
-    print('Usuarios ${user.toJson()}');
+    a = Adress.fromJson(await _sharedPref.read('address'));
+
+    print('Address init ${json.encode(a.toJson())}');
+   
     _addressProvaider.init(context, user);
     _ordersProvaider.init(context, user);
     refresh();
   }
 
   void createOrder() async {
-    Adress a = Adress.fromJson(await _sharedPref.read('address') ?? {});
-    selectedProducts =
-        Product.fromJsonList(await _sharedPref.read('order')).toList;
+    try {
+      Adress a = Adress.fromJson(await _sharedPref.read('address') ?? {});
 
-    Order order = new Order(
-        idClient: user.id, idAddress: a.id, products: selectedProducts);
-    ResponseApi responseApi = await _ordersProvaider.create(order);
-    print(responseApi.message);
-    if (responseApi.success) {
-      MySnackbar.show(context, responseApi.message);
+      selectedProducts =
+          Product.fromJsonList(await _sharedPref.read('order')).toList;
+
+      Order order = new Order(
+          idClient: user.id, idAddress: a.id, products: selectedProducts);
+      ResponseApi responseApi = await _ordersProvaider.create(order);
+     
+      if (responseApi.success) {
+        MySnackbar.show(context, responseApi.message);
+      }
+    } catch (e) {
+      print('Ha ocurrido un error $e');
     }
   }
 
@@ -50,12 +60,12 @@ class ClientAddressListController {
     if (user == null) {
       return [];
     }
-    print('USER ID ${user?.id}');
+  
     address = await _addressProvaider.getByUser(user?.id);
     Adress _adress =
         new Adress.fromJson(await _sharedPref.read('address') ?? {});
     int index = address.indexWhere((ad) => ad.id == _adress.id);
-    print('index $index');
+
     if (index != -1) {
       radioValue = index;
     }

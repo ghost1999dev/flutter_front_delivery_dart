@@ -47,7 +47,10 @@ class ClientAddressCreateController{
     ResponseApi responseApi=await _addressProvaider.create(address);
 
     if(responseApi.success){
+
       address.id=responseApi.data;
+
+      print(' Respuesta address ${responseApi.data}');
       _sharedPref.save('address', address);
       MySnackbar.show(context, "Direccion creada exitosamente");
       Navigator.pop(context,true);

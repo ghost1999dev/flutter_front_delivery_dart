@@ -50,8 +50,6 @@ class _ClientAddressListPagesState extends State<ClientAddressListPages> {
   }
 
   Widget _listAddress(){
-    
-    print("Entro a la funcions");
     return FutureBuilder(
         future: _con.getAdress(),
         builder: (context,AsyncSnapshot<List<Adress>> snapshot){
