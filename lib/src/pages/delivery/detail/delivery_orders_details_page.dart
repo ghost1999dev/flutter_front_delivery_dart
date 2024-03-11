@@ -78,7 +78,7 @@ class _DeliveryOrdersDetailsPageState extends State<DeliveryOrdersDetailsPage> {
                     '${RelativeTimeUtil.getRelativeTime(_con?.order?.timestamp ?? 0)}'),
 
                 //_textTotalPrice(),
-                _buttonNext()
+                _con?.order?.status !='ENTREGADO'? _buttonNext(): Container()
               ],
             ),
           ),
@@ -133,7 +133,7 @@ class _DeliveryOrdersDetailsPageState extends State<DeliveryOrdersDetailsPage> {
     );
   }
 
-  Widget _cardProduct(Product product) {
+  Widget _cardProduct(Product product) {  
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
@@ -202,7 +202,7 @@ class _DeliveryOrdersDetailsPageState extends State<DeliveryOrdersDetailsPage> {
       child: ElevatedButton(
         onPressed: _con.updateOrder,
         style: ElevatedButton.styleFrom(
-            primary: Colors.blue,
+            primary: _con.order?.status == 'DESPACHADO' ? Colors.blue : Colors.green,
             //EXPANDIR LA ALTURA DEL BOTOM
             padding: EdgeInsets.symmetric(vertical: 5),
 
@@ -217,7 +217,7 @@ class _DeliveryOrdersDetailsPageState extends State<DeliveryOrdersDetailsPage> {
                 height: 40,
                 alignment: Alignment.center,
                 child: Text(
-                  'INICIAR ENTREGA',
+                 _con.order?.status =='DESPACHADO'?'INICIAR ENTREGA':'IR AL MAPA',
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),

@@ -56,9 +56,9 @@ class RestaurantOrdersListController {
     try {
       isUpdated = await showMaterialModalBottomSheet(
         context: context,
-        builder: (context) => DeliveryOrdersDetailsPage(order: order),
+        builder: (context) => RestaurantOrdersDetailsPage(order: order),
       );
-      print(isUpdated);
+    
       if (!isUpdated || isUpdated == null) {
         refresh();
       }

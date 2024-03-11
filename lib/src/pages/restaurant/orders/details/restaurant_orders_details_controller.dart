@@ -33,7 +33,7 @@ class RestaurantOrdersDetailsController {
     user = User.fromJson(await _sharedPref.read('user'));
     _usersProvider.init(context, sessionUser: user);
     _ordersProvaider.init(context, user);
-    print('USUARIO REPARTIDOR ${user.toJson()}');
+    print('ARGUMENTO ORDENES ${order.toJson()}');
     if (order.products != null) {
       getTotal();
       getUsers();

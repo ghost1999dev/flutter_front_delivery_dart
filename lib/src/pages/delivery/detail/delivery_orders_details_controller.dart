@@ -12,8 +12,6 @@ import 'package:flutter_delivery/src/utils/my_snackbar.dart';
 import 'package:flutter_delivery/src/utils/shared_pref.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-
-
 class DeliveryOrdersDetailsController {
   BuildContext context;
   Function refresh;
@@ -46,15 +44,14 @@ class DeliveryOrdersDetailsController {
   }
 
   void updateOrder() async {
-      ResponseApi responseApi =
-          await _ordersProvaider.updateToOnTheWay(order);
+    if (order.status == 'DESPACHADO') {
+      ResponseApi responseApi = await _ordersProvaider.updateToOnTheWay(order);
       MySnackbar.show(context, responseApi.message);
-      //Navigator.pop(context,true);
-
       if (responseApi.success) {
-        Navigator.pushNamed(context,'delivery/orders/map',arguments: order.toJson());
+        Navigator.pushNamed(context, 'delivery/orders/map',
+            arguments: order.toJson());
       }
-    
+    }
   }
 
   void getUsers() async {

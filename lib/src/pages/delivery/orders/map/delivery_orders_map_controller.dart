@@ -40,6 +40,8 @@ class DeliveryOrdersMapController {
     this.refresh = refresh;
     order = Order.fromJson(
         ModalRoute.of(context).settings.arguments as Map<String, dynamic>);
+
+        
     deliveryMarquet = await createMarkerFromAsset('assets/img/delivery2.png');
     tooMarker = await createMarkerFromAsset('assets/img/home.png');
     user = User.fromJson(await _sharedPref.read('user'));
@@ -59,6 +61,7 @@ class DeliveryOrdersMapController {
     ResponseApi responseApi = await _ordersProvaider.updateToDelivery(order);
     if (responseApi.success) {
       MySnackbar.show(context, responseApi.message);
+      Navigator.pushNamedAndRemoveUntil(context, 'delivery/orders/list', (route) => false);
     }
   }
 

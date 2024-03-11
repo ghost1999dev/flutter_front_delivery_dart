@@ -80,7 +80,7 @@ class Order {
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "id_client": idClient,
+        "id_cliente": idClient,
         "id_delivery": idDelivery,
         "id_address": idAddress,
         "status": status,
