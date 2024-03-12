@@ -172,4 +172,27 @@ class OrdersProvaider {
       return [];
     }
   }
+   Future<List<Order>> getClientAndStatus(
+      String id_client, String status) async {
+    try {
+      Uri url =
+          Uri.http(_url, '$_api/findByClientAndStatus/$id_client/$status');
+      Map<String, String> headers = {
+        'Content-type': 'application/json',
+        'Authorization': sessionUser.sessionToken
+      };
+
+      final res = await http.get(url, headers: headers);
+      if (res.statusCode == 401) {
+        MySnackbar.show(context, 'Session expirada');
+        new SharedPref().logout(context, sessionUser.id);
+      }
+      final data = json.decode(res.body);
+      Order order = Order.fromJsonList(data);
+      return order.toList;
+    } catch (e) {
+      print('Error: $e ');
+      return [];
+    }
+  }
 }

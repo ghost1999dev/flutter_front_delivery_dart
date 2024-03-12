@@ -42,9 +42,6 @@ import 'package:flutter_delivery/src/utils/shared_pref.dart';class ClienteProduc
     return await _productsProvaider.getByCategory(idCategory);
 
   }
-
-
-
   void getCategories() async{
     categories = await _categoriesProvaider.getAll();
     refresh();
@@ -59,6 +56,10 @@ import 'package:flutter_delivery/src/utils/shared_pref.dart';class ClienteProduc
   void openDrawer() {
     key.currentState.openDrawer();
 
+  }
+
+  void goToOrdersList(){
+    Navigator.pushNamed(context, 'client/orders/list');
   }
   void goToRoles(){
     Navigator.pushNamedAndRemoveUntil(context, 'roles', (route) => false);
