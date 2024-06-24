@@ -51,6 +51,7 @@ class ClientAddressListController {
       if (responseApi.success) {
         MySnackbar.show(context, responseApi.message);
       }
+      Navigator.pushNamed(context,'client/payments/create');
     } catch (e) {
       print('Ha ocurrido un error $e');
     }
