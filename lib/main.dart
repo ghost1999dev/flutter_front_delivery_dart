@@ -13,10 +13,8 @@ import 'package:flutter_delivery/src/pages/client/products/list/client_products_
 import 'package:flutter_delivery/src/pages/client/update/client_update_page.dart';
 import 'package:flutter_delivery/src/pages/delivery/list/delivery_orders_list_pages.dart';
 import 'package:flutter_delivery/src/pages/delivery/orders/map/delivery_orders_map_pages.dart';
-
 import 'package:flutter_delivery/src/pages/login/login_page.dart';
 import 'package:flutter_delivery/src/pages/register/register_page.dart';
-
 import 'package:flutter_delivery/src/pages/restaurant/categories/create/restaurant_categories_create_page.dart';
 import 'package:flutter_delivery/src/pages/restaurant/orders/list/restaurant_orders_list_page.dart';
 import 'package:flutter_delivery/src/pages/restaurant/products/create/restaurant_products_create_page.dart';
@@ -64,9 +62,6 @@ class _MyAppState extends State<MyApp> {
         /*RUTAS DIRECCIONES*/
 
         'roles' : (BuildContext context) => RolesPage()
-
-
-
 
       },
       theme: ThemeData(
